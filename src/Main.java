@@ -1,3 +1,4 @@
+import Driver.Driver;
 import Driver.DriverB;
 import Driver.DriverC;
 import Driver.DriverD;
@@ -7,10 +8,7 @@ import Transport.enums.CapacityType;
 import Transport.enums.LoadType;
 import Transport.exception.TransportTypeException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws TransportTypeException {
@@ -269,6 +267,23 @@ public class Main {
             System.out.println("Автомобиль " + vehicle.getKey().getBrand() + " " + vehicle.getKey().getModel() + ", механик(и): "
                     + vehicle.getValue().toString().replace("[", "").replace("]", "") + ".");
         }
+        System.out.println();
+
+        Set<Driver> drivers = new HashSet<>();
+
+        drivers.add(driverB);
+        drivers.add(driverC);
+        drivers.add(driverD);
+        drivers.add(driverB); //проверка на повтор
+        System.out.println(drivers);
+
+        System.out.println();
+        System.out.println("Водители:");
+        Iterator driverIter = drivers.iterator();
+        while (driverIter.hasNext()) {
+            System.out.println(driverIter.next());
+        }
+
         System.out.println();
 
     }
